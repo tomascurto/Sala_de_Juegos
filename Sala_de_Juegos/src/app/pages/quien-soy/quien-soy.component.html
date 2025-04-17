@@ -1,1 +1,18 @@
-<p>quien-soy works!</p>
+<p-card *ngIf="githubUser" header="{{ githubUser.name }}" subheader="{{ githubUser.login }}">
+    <ng-template pTemplate="header">
+      <img [src]="githubUser.avatar_url" alt="Avatar" width="100" height="100" style="border-radius: 50%">
+    </ng-template>
+  
+    <div>
+      <p><strong>Bio:</strong> {{ githubUser.bio || 'Sin biografía' }}</p>
+      <p><strong>Ubicación:</strong> {{ githubUser.location || 'Desconocida' }}</p>
+      <p><strong>Repos públicos:</strong> {{ githubUser.public_repos }}</p>
+    </div>
+  
+    <ng-template pTemplate="footer">
+      <a [href]="githubUser.html_url" target="_blank">
+        <p-button pButton type="button" label="Ver en GitHub" icon="pi pi-github"></p-button>
+      </a>
+    </ng-template>
+</p-card>
+  
