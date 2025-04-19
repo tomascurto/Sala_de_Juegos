@@ -1,18 +1,33 @@
-<p-card *ngIf="githubUser" header="{{ githubUser.name }}" subheader="{{ githubUser.login }}">
+<div class="card-wrapper">
+  <p-card *ngIf="githubUser">
     <ng-template pTemplate="header">
-      <img [src]="githubUser.avatar_url" alt="Avatar" width="100" height="100" style="border-radius: 50%">
+      <div class="card-header">
+        <img
+          [src]="githubUser.avatar_url"
+          alt="Avatar"
+          class="avatar"
+        />
+        <h2>{{ githubUser.login }}</h2>
+      </div>
     </ng-template>
-  
-    <div>
-      <p><strong>Bio:</strong> {{ githubUser.bio || 'Sin biografía' }}</p>
-      <p><strong>Ubicación:</strong> {{ githubUser.location || 'Desconocida' }}</p>
+
+    <div class="card-content">
+      <p><strong>Seguidores:</strong> {{ githubUser.followers }}</p>
+      <p><strong>Siguiendo:</strong> {{ githubUser.following }}</p>
       <p><strong>Repos públicos:</strong> {{ githubUser.public_repos }}</p>
     </div>
-  
+
     <ng-template pTemplate="footer">
-      <a [href]="githubUser.html_url" target="_blank">
-        <p-button pButton type="button" label="Ver en GitHub" icon="pi pi-github"></p-button>
-      </a>
+      <div class="card-footer">
+        <a [href]="githubUser.html_url" target="_blank">
+          <p-button
+            pButton
+            type="button"
+            label="Ver en GitHub"
+            icon="pi pi-github"
+          ></p-button>
+        </a>
+      </div>
     </ng-template>
-</p-card>
-  
+  </p-card>
+</div>
